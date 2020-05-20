@@ -9,8 +9,14 @@ import LoginButton from './LoginButton'
 const { auth } = getAuth()
 const Style = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  button {
+    margin-top: 20px;
+  }
 `
 
 function LoginPage() {
@@ -25,7 +31,7 @@ function LoginPage() {
   }
 
   return (
-    <App>
+    <App noHeader>
       <Style>
         <div>
           <Typography variant="h3">レモポータル</Typography>

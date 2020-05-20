@@ -26,6 +26,11 @@ const theme = createMuiTheme({
       default: '#fff',
     },
   },
+  props: {
+    MuiButton: {
+      variant: 'contained',
+    },
+  },
 })
 
 export default theme

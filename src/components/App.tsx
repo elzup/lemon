@@ -22,7 +22,10 @@ export const LoginContext = createContext<
   },
 ])
 
-const App = ({ children }: { children?: unknown }) => {
+const App: React.FC<{ noHeader?: boolean }> = ({
+  noHeader = false,
+  children,
+}) => {
   const [login, setLogin] = useState<LoginInfo>({ status: 'none' })
   const [fuser, loading] = useAuthState(auth)
 
@@ -43,7 +46,7 @@ const App = ({ children }: { children?: unknown }) => {
   return (
     <LoginContext.Provider value={[login, setLogin]}>
       <main>
-        <Header />
+        {!noHeader && <Header />}
         {children}
       </main>
     </LoginContext.Provider>
