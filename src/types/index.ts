@@ -4,6 +4,9 @@ export type Action = {
 
 export type LoginInfo =
   | {
+      status: 'loading'
+    }
+  | {
       status: 'none'
     }
   | {

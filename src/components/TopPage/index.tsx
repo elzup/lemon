@@ -7,7 +7,7 @@ function TopPage() {
   const [login] = useContext(LoginContext)
   const router = useRouter()
 
-  if (login.status !== 'auth') {
+  if (login.status !== 'auth' && login.status !== 'loading') {
     router.push('/login')
     return <div />
   }

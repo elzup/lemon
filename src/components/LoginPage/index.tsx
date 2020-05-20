@@ -44,8 +44,6 @@ function LoginPageMain() {
     return null
   }
 
-  console.log(login)
-
   return (
     <Style>
       <div>

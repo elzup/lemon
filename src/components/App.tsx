@@ -26,22 +26,23 @@ const App: React.FC<{ noHeader?: boolean }> = ({
   noHeader = false,
   children,
 }) => {
-  const [login, setLogin] = useState<LoginInfo>({ status: 'none' })
+  const [login, setLogin] = useState<LoginInfo>({ status: 'loading' })
   const [fuser, loading] = useAuthState(auth)
 
   useEffect(() => {
-    setLogin({ status: 'none' })
-    if (loading || !fuser) return
-    if (fuser.email || '' in config.whitelist) {
+    if (loading) return setLogin({ status: 'loading' })
+    if (!fuser) return setLogin({ status: 'none' })
+
+    if (config.whitelist.includes(fuser.email || '')) {
+      setLogin({ status: 'auth', uid: fuser.uid })
+      return
+    } else {
       setLogin({
         status: 'invalid',
         message: '登録されていないユーザです。',
       })
-      return
     }
-
-    setLogin({ status: 'auth', uid: fuser.uid })
-  }, [loading, fuser && fuser.email])
+  }, [loading])
 
   return (
     <LoginContext.Provider value={[login, setLogin]}>
