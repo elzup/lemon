@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import App, { LoginContext } from '../App'
+import Screen from './Screen'
 
 function TopPage() {
   console.log('top render')
@@ -11,7 +12,7 @@ function TopPage() {
     router.push('/login')
     return <div />
   }
-  return <div>home</div>
+  return <Screen />
 }
 
 function TopPageContainer() {
