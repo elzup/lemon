@@ -2,8 +2,9 @@ import { Typography } from '@material-ui/core'
 import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import styled from 'styled-components'
+import { useContext } from 'react'
 import { getAuth } from '../../service/firebase'
-import App from '../App'
+import App, { LoginContext } from '../App'
 import LoginButton from './LoginButton'
 
 const { auth } = getAuth()
@@ -34,28 +35,41 @@ const Style = styled.div`
   }
 `
 
-function LoginPage() {
-  const [user, loading] = useAuthState(auth)
+function LoginPageMain() {
+  const [login] = useContext(LoginContext)
   const router = useRouter()
 
-  if (loading) return <Typography>loading</Typography>
-
-  if (!!user) {
+  if (login.status === 'auth') {
     router.push('/')
     return null
   }
 
+  console.log(login)
+
+  return (
+    <Style>
+      <div>
+        <div className="title">
+          <img src="/icon-4x.png" />
+          <Typography variant="h3">レモポータル</Typography>
+        </div>
+        <LoginButton />
+        <div>
+          {login.status === 'invalid' && (
+            <Typography variant="caption" color="error">
+              {login.message}
+            </Typography>
+          )}
+        </div>
+      </div>
+    </Style>
+  )
+}
+
+function LoginPage() {
   return (
     <App noHeader>
-      <Style>
-        <div>
-          <div className="title">
-            <img src="/icon-4x.png"></img>
-            <Typography variant="h3">レモポータル</Typography>
-          </div>
-          <LoginButton />
-        </div>
-      </Style>
+      <LoginPageMain />
     </App>
   )
 }
