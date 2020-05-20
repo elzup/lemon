@@ -1,11 +1,17 @@
 import { Typography } from '@material-ui/core'
 import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import styled from 'styled-components'
 import { getAuth } from '../../service/firebase'
 import App from '../App'
 import LoginButton from './LoginButton'
 
 const { auth } = getAuth()
+const Style = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 function LoginPage() {
   const [user, loading] = useAuthState(auth)
@@ -20,8 +26,12 @@ function LoginPage() {
 
   return (
     <App>
-      <Typography variant="h3">lemona</Typography>
-      <LoginButton />
+      <Style>
+        <div>
+          <Typography variant="h3">レモポータル</Typography>
+          <LoginButton />
+        </div>
+      </Style>
     </App>
   )
 }

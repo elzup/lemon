@@ -1,9 +1,14 @@
+import { CssBaseline, MuiThemeProvider } from '@material-ui/core'
 import { AppProps } from 'next/app'
-import 'normalize.css'
+import theme from '../theme'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
-    <Component {...pageProps} />
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <Component {...pageProps} />
+    </MuiThemeProvider>
   </>
 )
 
