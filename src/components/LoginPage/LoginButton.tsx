@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core'
-import { getAuth } from '../service/firebase'
+import { getAuth } from '../../service/firebase'
 
 const { login } = getAuth()
 

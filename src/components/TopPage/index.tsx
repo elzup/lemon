@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import App, { LoginContext } from '../App'
 
 function TopPage() {
+  console.log('top render')
   const [login] = useContext(LoginContext)
   const router = useRouter()
 

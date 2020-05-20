@@ -12,6 +12,7 @@ function LoginPage() {
   const router = useRouter()
 
   if (loading) return <Typography>loading</Typography>
+
   if (!!user) {
     router.push('/')
     return null
