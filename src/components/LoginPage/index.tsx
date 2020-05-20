@@ -1,45 +1,26 @@
+import { Typography } from '@material-ui/core'
+import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import Router, { useRouter } from 'next/router'
-import { useDocumentDataOnce } from 'react-firebase-hooks/firestore'
-import { Typography, Container } from '@material-ui/core'
-import { useContext } from 'react'
-import { getAuth, getFirestore, usableUserId } from '../../service/firebase'
-import App, { LoginContext } from '../App'
-import { User } from '../../types'
-import LoginButton from '../LoginButton'
+import { getAuth } from '../../service/firebase'
+import App from '../App'
+import LoginButton from './LoginButton'
 
 const { auth } = getAuth()
-const fdb = getFirestore()
-
-function LoginMain({ uid }: { uid: string }) {
-  const router = useRouter()
-  const [logins] = useContext(LoginContext)
-
-  if (logins.status === 'auth') {
-    router.push('/') // NOTE: alraedy registered
-    return null
-  }
-  return (
-    <div>
-      <Container>
-        <LoginButton />
-      </Container>
-    </div>
-  )
-}
 
 function LoginPage() {
   const [user, loading] = useAuthState(auth)
+  const router = useRouter()
 
   if (loading) return <Typography>loading</Typography>
-  if (!user) {
-    Router.push('/') // NOTE: not login
+  if (!!user) {
+    router.push('/')
     return null
   }
 
   return (
     <App>
       <Typography variant="h3">lemona</Typography>
+      <LoginButton />
     </App>
   )
 }

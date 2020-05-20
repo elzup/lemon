@@ -1,17 +1,7 @@
-import { Typography } from '@material-ui/core'
-import { LoginInfo } from '../types'
-import LoginButton from './LoginButton'
+import React from 'react'
 
-type Props = {
-  login: LoginInfo
-}
-function Header({ login }: Props) {
-  return (
-    <header>
-      lemoona
-      {login.status === 'comp' && <Typography>{login.user.id}</Typography>}
-      <LoginButton />
-    </header>
-  )
+type Props = {}
+function Header() {
+  return <header>lemoona</header>
 }
 export default Header

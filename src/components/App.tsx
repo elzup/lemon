@@ -1,18 +1,17 @@
-import { useAuthState } from 'react-firebase-hooks/auth'
 import {
-  useState,
-  useEffect,
+  createContext,
   Dispatch,
   SetStateAction,
-  createContext,
+  useEffect,
+  useState,
 } from 'react'
-import Router from 'next/router'
-import { getAuth, getFirestore } from '../service/firebase'
-import { User, LoginInfo } from '../types'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import config from '../config'
+import { getAuth } from '../service/firebase'
+import { LoginInfo } from '../types'
 import Header from './Header'
 
 const { auth } = getAuth()
-const fdb = getFirestore()
 
 export const LoginContext = createContext<
   [LoginInfo, Dispatch<SetStateAction<LoginInfo>>]
@@ -23,10 +22,6 @@ export const LoginContext = createContext<
   },
 ])
 
-// function useLogin() {
-//   // TODO
-// }
-
 const App = ({ children }: { children?: unknown }) => {
   const [login, setLogin] = useState<LoginInfo>({ status: 'none' })
   const [fuser, loading] = useAuthState(auth)
@@ -34,30 +29,21 @@ const App = ({ children }: { children?: unknown }) => {
   useEffect(() => {
     setLogin({ status: 'none' })
     if (loading || !fuser) return
-    setLogin({ status: 'auth', uid: fuser.uid })
-    fdb
-      .collection('user')
-      .doc(fuser.uid)
-      .get()
-      .then((user) => {
-        if (user.exists) {
-          setLogin({
-            status: 'comp',
-            uid: fuser.uid,
-            user: user.data() as User,
-          })
-        } else {
-          if (Router.asPath !== '/register') {
-            Router.push('/register')
-          }
-        }
+    if (fuser.email || '' in config.whitelist) {
+      setLogin({
+        status: 'invalid',
+        message: '登録されていないユーザです。',
       })
-  }, [loading, fuser && fuser.uid])
+      return
+    }
+
+    setLogin({ status: 'auth', uid: fuser.uid })
+  }, [loading, fuser && fuser.email])
 
   return (
     <LoginContext.Provider value={[login, setLogin]}>
       <main>
-        <Header login={login} />
+        <Header />
         {children}
       </main>
     </LoginContext.Provider>
