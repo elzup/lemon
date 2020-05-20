@@ -1,4 +1,4 @@
-import { Button, makeStyles } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 import { getAuth } from '../../service/firebase'
 
@@ -14,7 +14,13 @@ const StyledButton = styled(Button)`
 
 function LoginButton() {
   return (
-    <StyledButton onClick={() => login()} fullWidth size="large">
+    <StyledButton
+      onClick={() => {
+        login()
+      }}
+      fullWidth
+      size="large"
+    >
       ログイン
     </StyledButton>
   )

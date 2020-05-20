@@ -17,6 +17,21 @@ const Style = styled.div`
   button {
     margin-top: 20px;
   }
+
+  div {
+  }
+
+  .title {
+    display: flex;
+    h3 {
+      font-size: 2rem;
+      padding: 0.5rem;
+    }
+    img {
+      height: calc(3rem * 1.167);
+      border-radius: 30%;
+    }
+  }
 `
 
 function LoginPage() {
@@ -34,7 +49,10 @@ function LoginPage() {
     <App noHeader>
       <Style>
         <div>
-          <Typography variant="h3">レモポータル</Typography>
+          <div className="title">
+            <img src="/icon-4x.png"></img>
+            <Typography variant="h3">レモポータル</Typography>
+          </div>
           <LoginButton />
         </div>
       </Style>
