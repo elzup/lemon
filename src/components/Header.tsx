@@ -1,7 +1,7 @@
-import React from 'react'
-
-import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
+import { useRouter } from 'next/router'
+import React from 'react'
+import styled from 'styled-components'
 
 const Style = styled.header`
   text-align: center;
@@ -17,8 +17,15 @@ const Style = styled.header`
 
 type Props = {}
 function Header() {
+  const router = useRouter()
+
   return (
     <Style>
+      <div
+        onClick={() => {
+          router.push('/')
+        }}
+      ></div>
       <img src="/icon-4x.png" />
       <Typography variant="h6">レモポータル</Typography>
     </Style>
