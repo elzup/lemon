@@ -20,12 +20,11 @@ function Header() {
   const router = useRouter()
 
   return (
-    <Style>
-      <div
-        onClick={() => {
-          router.push('/')
-        }}
-      ></div>
+    <Style
+      onClick={() => {
+        router.push('/')
+      }}
+    >
       <img src="/icon-4x.png" />
       <Typography variant="h6">レモポータル</Typography>
     </Style>
