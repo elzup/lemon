@@ -4,7 +4,7 @@ import { createMuiTheme } from '@material-ui/core/styles'
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
-      '"Hiragino Maru Gothic Pro"',
+      '"Hiragino Maru Gothic ProN"',
       '"Roboto"',
       '"Helvetica"',
       'Arial',
