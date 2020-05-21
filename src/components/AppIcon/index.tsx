@@ -1,8 +1,8 @@
-import { Typography, Container } from '@material-ui/core'
-import styled from 'styled-components'
+import { Container, Typography } from '@material-ui/core'
+import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import SwatchesPicker from 'react-color/lib/components/swatches/Swatches'
-import { useState, useRef, useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import styled from 'styled-components'
 import App from '../App'
 import AuthContainer from '../AuthContainer'
 
@@ -39,6 +39,7 @@ const Style = styled.div`
 `
 
 const images = [
+  '/baseicon/lemon-mii.png',
   '/baseicon/lemon-atsu-face.png',
   '/baseicon/lemon-queen.png',
   '/baseicon/lemon-happy.png',
@@ -105,15 +106,15 @@ function Main() {
 }
 const pageVariants = {
   initial: {
-    scale: 0,
+    scale: 0.6,
     opacity: 0,
   },
   in: {
     scale: 1,
     opacity: 1,
   },
-  out: {
-    scale: 0,
+  exit: {
+    scale: 0.6,
     opacity: 0,
   },
 }
@@ -122,12 +123,8 @@ function AppIconPageContainer() {
   return (
     <App>
       <AuthContainer />
-      <motion.div
-        initial="initial"
-        animate="in"
-        exit="out"
-        variants={pageVariants}
-      >
+
+      <motion.div initial="initial" animate="in" variants={pageVariants}>
         <Main />
       </motion.div>
     </App>
