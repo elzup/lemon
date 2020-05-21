@@ -23,13 +23,14 @@ const Style = styled.div`
 
   .swatches-picker {
     > div > div > div {
-      height: 150px !important;
+      height: 400px !important;
     }
-    height: 150px !important;
+    height: 400px !important;
     width: 100% !important;
   }
   canvas {
     border: solid 1px gray;
+    margin: 4px;
   }
   #canvas-c {
     border-radius: 100%;
@@ -84,9 +85,10 @@ function Main() {
         </div>
         <Typography variant="h6">背景色</Typography>
         <SwatchesPicker onChange={(e) => setColor(e.hex)} />
-        <div style={{ marginTop: '8px' }}>
-          <canvas ref={canvasRef} height={300} width={300} />
-          <canvas id="canvas-c" ref={canvas2Ref} height={300} width={300} />
+        <Typography variant="h6">生成</Typography>
+        <div style={{ display: 'flex' }}>
+          <canvas ref={canvasRef} height={200} width={200} />
+          <canvas id="canvas-c" ref={canvas2Ref} height={200} width={200} />
         </div>
       </Container>
     </Style>
