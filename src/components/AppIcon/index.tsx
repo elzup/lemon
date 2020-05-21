@@ -15,7 +15,7 @@ const Style = styled.div`
       }
       border: solid gray 4px;
       border-radius: 12px;
-      &[data-select] {
+      &[data-select='true'] {
         border: solid orange 4px;
       }
     }
@@ -29,7 +29,7 @@ const Style = styled.div`
     width: 100% !important;
   }
   canvas {
-    border: solid 1px gray;
+    border: dotted 1px gray;
     margin: 4px;
   }
   #canvas-c {
@@ -37,7 +37,11 @@ const Style = styled.div`
   }
 `
 
-const images = ['/baseicon/lemon-atsu-face.png']
+const images = [
+  '/baseicon/lemon-atsu-face.png',
+  '/baseicon/lemon-queen.png',
+  '/baseicon/lemon-happy.png',
+]
 
 function Main() {
   const [portrait, setPortrait] = useState<string>(images[0])
@@ -78,7 +82,11 @@ function Main() {
         <Typography variant="h6">イメージ</Typography>
         <div className="img-grid">
           {images.map((url) => (
-            <div key={url} data-select={portrait === url}>
+            <div
+              key={url}
+              data-select={portrait === url}
+              onClick={() => setPortrait(url)}
+            >
               <img src={url} />
             </div>
           ))}
