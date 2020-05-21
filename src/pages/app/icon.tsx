@@ -1,7 +1,9 @@
 import dynamic from 'next/dynamic'
 
-const TopPage = dynamic(() => import('../components/TopPage'), { ssr: false })
+const Page = dynamic(() => import('../../components/AppIcon'), {
+  ssr: false,
+})
 
 export default () => {
-  return <TopPage />
+  return <Page />
 }

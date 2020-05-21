@@ -1,5 +1,6 @@
-import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
+import { useRouter } from 'next/router'
+import styled from 'styled-components'
 
 const MainStyle = styled.div`
   background: white;
@@ -31,15 +32,17 @@ type Appli = {
   path: string
 }
 const apps: Appli[] = [
-  { icon: '/appicon/face.svg', name: 'アイコン', path: 'app-icon' },
+  { icon: '/appicon/face.svg', name: 'アイコンメイク', path: '/app/icon' },
 ]
 
 function Main() {
+  const router = useRouter()
+
   return (
     <MainStyle>
       <div className="grid">
         {apps.map((app) => (
-          <div key={app.name}>
+          <div key={app.name} onClick={() => router.push(app.path)}>
             <img src={app.icon} />
             <Typography>{app.name}</Typography>
           </div>

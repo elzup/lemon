@@ -16,7 +16,7 @@ const { auth } = getAuth()
 export const LoginContext = createContext<
   [LoginInfo, Dispatch<SetStateAction<LoginInfo>>]
 >([
-  { status: 'none' },
+  { status: 'loading' },
   () => {
     //
   },
@@ -42,7 +42,7 @@ const App: React.FC<{ noHeader?: boolean }> = ({
         message: '登録されていないユーザです。',
       })
     }
-  }, [loading])
+  }, [loading, !fuser, fuser?.email])
 
   return (
     <LoginContext.Provider value={[login, setLogin]}>

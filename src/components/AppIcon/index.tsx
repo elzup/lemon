@@ -1,12 +1,17 @@
-import { Typography } from '@material-ui/core'
+import { Typography, Container } from '@material-ui/core'
+import styled from 'styled-components'
 import App from '../App'
 import AuthContainer from '../AuthContainer'
 
+const Style = styled.div``
+
 function Main() {
   return (
-    <div>
-      <Typography>アイコン作成</Typography>
-    </div>
+    <Style>
+      <Container>
+        <Typography variant="h5">アイコンメイク</Typography>
+      </Container>
+    </Style>
   )
 }
 
