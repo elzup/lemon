@@ -29,9 +29,14 @@ const Style = styled.div`
     height: 400px !important;
     width: 100% !important;
   }
+  .comp {
+    img {
+      border: dotted 1px gray;
+      margin: 4px;
+    }
+  }
   canvas {
-    border: dotted 1px gray;
-    margin: 4px;
+    display: none;
   }
   #canvas-c {
     border-radius: 100%;
@@ -48,8 +53,8 @@ const images = [
 function Main() {
   const [portrait, setPortrait] = useState<string>(images[0])
   const [color, setColor] = useState<string>('#ffffff0')
+  const [png, setPng] = useState<string | null>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const canvas2Ref = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
     const background = new Image()
@@ -66,15 +71,8 @@ function Main() {
     ctx.fillStyle = color
     ctx.fillRect(0, 0, canvasElem.width, canvasElem.height)
     ctx.drawImage(background, 0, 0, canvasElem.width, canvasElem.height)
-    const ctx2 = canvas2Ref.current?.getContext('2d')
 
-    if (!!ctx2) {
-      ctx2.putImageData(
-        ctx.getImageData(0, 0, canvasElem.width, canvasElem.height),
-        0,
-        0
-      )
-    }
+    setPng(canvasElem.toDataURL())
   }, [portrait, color])
 
   return (
@@ -96,10 +94,16 @@ function Main() {
         <Typography variant="h6">背景色</Typography>
         <SwatchesPicker onChange={(e) => setColor(e.hex)} />
         <Typography variant="h6">生成</Typography>
-        <div style={{ display: 'flex' }}>
-          <canvas ref={canvasRef} height={200} width={200} />
-          <canvas id="canvas-c" ref={canvas2Ref} height={200} width={200} />
-        </div>
+        {png && (
+          <div
+            className="comp"
+            style={{ display: 'grid', justifyContent: 'center' }}
+          >
+            <img src={png} />
+            <img id="canvas-c" src={png} />
+          </div>
+        )}
+        <canvas ref={canvasRef} height={255} width={255} />
       </Container>
     </Style>
   )
