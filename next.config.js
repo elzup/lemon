@@ -3,10 +3,14 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 const webpack = require('webpack')
+const withPWA = require('next-pwa')
 
 require('dotenv').config()
 
-module.exports = {
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+  },
   webpack: (config) => {
     const env = Object.keys(process.env).reduce((acc, curr) => {
       acc[`process.env.${curr}`] = JSON.stringify(process.env[curr])
@@ -17,4 +21,4 @@ module.exports = {
 
     return config
   },
-}
+})
