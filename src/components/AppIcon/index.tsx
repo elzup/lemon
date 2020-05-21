@@ -2,6 +2,7 @@ import { Typography, Container } from '@material-ui/core'
 import styled from 'styled-components'
 import SwatchesPicker from 'react-color/lib/components/swatches/Swatches'
 import { useState, useRef, useEffect } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import App from '../App'
 import AuthContainer from '../AuthContainer'
 
@@ -102,12 +103,33 @@ function Main() {
     </Style>
   )
 }
+const pageVariants = {
+  initial: {
+    scale: 0,
+    opacity: 0,
+  },
+  in: {
+    scale: 1,
+    opacity: 1,
+  },
+  out: {
+    scale: 0,
+    opacity: 0,
+  },
+}
 
 function AppIconPageContainer() {
   return (
     <App>
       <AuthContainer />
-      <Main />
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+      >
+        <Main />
+      </motion.div>
     </App>
   )
 }

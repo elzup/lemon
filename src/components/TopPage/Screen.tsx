@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 const MainStyle = styled.div`
   background: white;
@@ -8,7 +9,7 @@ const MainStyle = styled.div`
   width: 100%;
   height: 100%;
   padding: 8%;
-  .grid {
+  .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 5%;
@@ -26,6 +27,27 @@ const MainStyle = styled.div`
   }
 `
 
+const containerAnim = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 0.3,
+      when: 'beforeChildren',
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const itemAnim = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+}
+
 type Appli = {
   name: string
   icon: string
@@ -40,14 +62,24 @@ function Main() {
 
   return (
     <MainStyle>
-      <div className="grid">
+      <motion.div
+        className="container"
+        variants={containerAnim}
+        initial="hidden"
+        animate="visible"
+      >
         {apps.map((app) => (
-          <div key={app.name} onClick={() => router.push(app.path)}>
+          <motion.div
+            key={app.name}
+            className="item"
+            variants={itemAnim}
+            onClick={() => router.push(app.path)}
+          >
             <img src={app.icon} />
             <Typography>{app.name}</Typography>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </MainStyle>
   )
 }
