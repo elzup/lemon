@@ -15,7 +15,6 @@ const Style = styled.header`
   }
 `
 
-type Props = {}
 function Header() {
   return (
     <Link href="/">

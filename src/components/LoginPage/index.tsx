@@ -2,11 +2,9 @@ import { Typography } from '@material-ui/core'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { getAuth } from '../../service/firebase'
 import App, { LoginContext } from '../App'
 import LoginButton from './LoginButton'
 
-const { auth } = getAuth()
 const Style = styled.div`
   display: flex;
   justify-content: center;
