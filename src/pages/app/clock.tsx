@@ -4,6 +4,4 @@ const Page = dynamic(() => import('../../components/AppClock'), {
   ssr: false,
 })
 
-export default () => {
-  return <Page />
-}
+export default Page

@@ -4,6 +4,4 @@ const Page = dynamic(() => import('../../components/AppGames'), {
   ssr: false,
 })
 
-export default () => {
-  return <Page />
-}
+export default Page
