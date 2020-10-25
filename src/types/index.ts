@@ -17,3 +17,11 @@ export type LoginInfo =
       status: 'auth'
       uid: string
     }
+
+export type Game = {
+  id: string
+  title: string
+  model: string
+  pattern: string
+  // link: string
+}

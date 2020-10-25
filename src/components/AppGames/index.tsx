@@ -1,26 +1,33 @@
 import { Container, Typography } from '@material-ui/core'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import App from '../App'
 import AuthContainer from '../AuthContainer'
+import { loadGames } from '../../service/gas'
+import { Game } from '../../types'
 
 const Style = styled.div``
 
-type Game = {
-  title: string
-  link: string
-}
-const games: Game[] = [{ title: 'hoge', link: 'https://' }]
-
 function Main() {
+  const [games, setGames] = useState<Game[] | null>(null)
+
+  useEffect(() => {
+    loadGames().then((games) => {
+      console.log(games)
+
+      setGames(games)
+    })
+  }, [])
+
   return (
     <Style>
       <Container>
         <Typography variant="h5">げーむす</Typography>
         <Typography variant="caption">一緒にやったゲームリスト</Typography>
-        {games.map((game) => (
-          <GameCard key={game.title} game={game} />
-        ))}
+        {!games && <Typography>laoding...</Typography>}
+        {games &&
+          games.map((game) => <GameCard key={game.title} game={game} />)}
       </Container>
     </Style>
   )
