@@ -1,1 +1,3 @@
-# Score server sample app
+# lemona
+
+> app in app in mobile boilerplate
