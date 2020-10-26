@@ -1,4 +1,3 @@
-import { request } from 'http'
 import config from '../config'
 import { Game } from '../types'
 

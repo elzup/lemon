@@ -13,11 +13,7 @@ function Main() {
   const [games, setGames] = useState<Game[] | null>(null)
 
   useEffect(() => {
-    loadGames().then((games) => {
-      console.log(games)
-
-      setGames(games)
-    })
+    loadGames().then(setGames)
   }, [])
 
   return (
