@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "lemoona web app",
   "engines": {
-    "node": "10"
+    "node": "14"
   },
   "license": "MIT",
   "scripts": {
@@ -19,31 +19,31 @@
     "@material-ui/core": "^4.11.0",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "firebase": "^7.24.0",
-    "formik": "^2.2.1",
+    "firebase": "^8.0.1",
+    "formik": "^2.2.3",
     "framer-motion": "^2.9.4",
-    "next": "^9.5.5",
+    "next": "^10.0.1",
     "next-pwa": "^3.1.5",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
-    "react-color": "^2.18.1",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.1",
     "react-firebase-hooks": "^2.2.0",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@types/node": "^14.14.2",
-    "@types/react": "^16.9.53",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.56",
     "@types/react-color": "^3.0.4",
-    "@types/react-dom": "^16.9.6",
+    "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
-    "@types/yup": "^0.29.8",
+    "@types/yup": "^0.29.9",
     "cpx": "1.5.0",
     "cross-env": "7.0.2",
-    "eslint": "^7.12.0",
-    "eslint-config-nzap": "^3.2.0",
-    "firebase-tools": "^8.13.1",
+    "eslint": "^7.13.0",
+    "eslint-config-nzap": "^4.1.0",
+    "firebase-tools": "^8.15.1",
     "rimraf": "3.0.2",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.5"
   }
 }
