@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// TODO: remove
+
 import { Container, Typography } from '@material-ui/core'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'

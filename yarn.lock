@@ -5203,10 +5203,10 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-nzap@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-nzap/-/eslint-config-nzap-4.1.0.tgz#98fe4c03d14a2a46a1890ef4537454813c37af24"
-  integrity sha512-91NP/u7tIGSp2YreQhJf5oQr5biuOcAGmk/yaBUMp5V8R4KHOlYO/Rn6nd/V6y1d++nV8OjuxBRlWiXQOiFo1Q==
+eslint-config-nzap@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-nzap/-/eslint-config-nzap-4.2.0.tgz#e8e7076e9f9e233221cd93542ae9368b75dac142"
+  integrity sha512-GjAZclelBUz23klstPCsLOHUCxGTk3rW8X8i0IRjkZMXPgWZyoGwk4pRuvtzN6//Z7SQJwg2swTi/RvjGUaJLw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.6.1"
     "@typescript-eslint/parser" "^4.6.1"
@@ -9217,6 +9217,11 @@ prettier-linter-helpers@^1.0.0:
   integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
   dependencies:
     fast-diff "^1.1.2"
+
+prettier@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
+  integrity sha512-16c7K+x4qVlJg9rEbXl7HEGmQyZlG4R9AgP+oHKRMsMsuk8s+ATStlf1NpDqyBI1HpVyfjLOeMhH2LvuNvV5Vg==
 
 pretty-bytes@^5.3.0:
   version "5.3.0"

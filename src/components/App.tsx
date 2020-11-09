@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   Dispatch,
   SetStateAction,
@@ -35,7 +35,6 @@ const App: React.FC<{ noHeader?: boolean }> = ({
 
     if (config.whitelist.includes(fuser.email || '')) {
       setLogin({ status: 'auth', uid: fuser.uid })
-      return
     } else {
       setLogin({
         status: 'invalid',
