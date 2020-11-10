@@ -9,6 +9,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import config from '../config'
 import { getAuth } from '../service/firebase'
 import { LoginInfo } from '../types'
+import { lemonHash } from '../utils'
 import Header from './Header'
 
 const { auth } = getAuth()
@@ -33,7 +34,7 @@ const App: React.FC<{ noHeader?: boolean }> = ({
     if (loading) return setLogin({ status: 'loading' })
     if (!fuser) return setLogin({ status: 'none' })
 
-    if (config.whitelist.includes(fuser.email || '')) {
+    if (config.whitelist.includes(lemonHash(fuser.email || ''))) {
       setLogin({ status: 'auth', uid: fuser.uid })
     } else {
       setLogin({
