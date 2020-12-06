@@ -2,10 +2,8 @@
 // TODO: remove
 
 import { Container, Typography } from '@material-ui/core'
-import { motion } from 'framer-motion'
 import styled from 'styled-components'
-import App from '../App'
-import AuthContainer from '../AuthContainer'
+import { withAppli } from '../withAppli'
 
 const Style = styled.div``
 
@@ -55,22 +53,6 @@ function ClockCard({ people, time }: { people: People; time: number }) {
   )
 }
 
-const pageVariants = {
-  initial: { scale: 0.6, opacity: 0 },
-  in: { scale: 1, opacity: 1 },
-  exit: { scale: 0.6, opacity: 0 },
-}
+const AppClockPage = withAppli(Main)
 
-function AppClockPageContainer() {
-  return (
-    <App>
-      <AuthContainer />
-
-      <motion.div initial="initial" animate="in" variants={pageVariants}>
-        <Main />
-      </motion.div>
-    </App>
-  )
-}
-
-export default AppClockPageContainer
+export default AppClockPage

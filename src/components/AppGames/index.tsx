@@ -1,11 +1,9 @@
 import { Container, Typography } from '@material-ui/core'
-import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import App from '../App'
-import AuthContainer from '../AuthContainer'
 import { loadGames } from '../../service/gas'
 import { Game } from '../../types'
+import { withAppli } from '../withAppli'
 
 const Style = styled.div``
 
@@ -37,22 +35,6 @@ function GameCard({ game }: { game: Game }) {
   )
 }
 
-const pageVariants = {
-  initial: { scale: 0.6, opacity: 0 },
-  in: { scale: 1, opacity: 1 },
-  exit: { scale: 0.6, opacity: 0 },
-}
+const AppGamesPage = withAppli(Main)
 
-function AppGamesPageContainer() {
-  return (
-    <App>
-      <AuthContainer />
-
-      <motion.div initial="initial" animate="in" variants={pageVariants}>
-        <Main />
-      </motion.div>
-    </App>
-  )
-}
-
-export default AppGamesPageContainer
+export default AppGamesPage
