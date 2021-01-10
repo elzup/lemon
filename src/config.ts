@@ -18,7 +18,11 @@ const loadPieple = (s: string): Person[] => {
     console.error('parse error. invalid PEOPLE config')
     return []
   }
-  return o.map((p) => ({ ...p, birthday: +new Date(p.birthday) }))
+  return o.map((p) => ({
+    ...p,
+    birthday: +new Date(p.birthday),
+    birthdayStr: p.birthday,
+  }))
 }
 
 const config = {

@@ -34,4 +34,5 @@ export type PersonRaw = {
 export type Person = {
   name: string
   birthday: number
+  birthdayStr: string
 }
