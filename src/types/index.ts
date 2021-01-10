@@ -25,3 +25,13 @@ export type Game = {
   pattern: string
   // link: string
 }
+
+export type PersonRaw = {
+  name: string
+  birthday: string
+}
+
+export type Person = {
+  name: string
+  birthday: number
+}

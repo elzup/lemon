@@ -3,15 +3,13 @@
 
 import { Container, Typography } from '@material-ui/core'
 import styled from 'styled-components'
+import { Person } from '../../types'
+import config from '../../config'
 import { withAppli } from '../withAppli'
 
+const { persons } = config
 const Style = styled.div``
 
-type People = {
-  name: string
-  birthday: number
-}
-const peoples: People[] = [{ name: 'hiro', birthday: +new Date('1994-01-05') }]
 const today = Date.now()
 
 function Main() {
@@ -19,8 +17,8 @@ function Main() {
     <Style>
       <Container>
         <Typography variant="h5">ライフクロック</Typography>
-        {peoples.map((people) => (
-          <ClockCard key={people.name} people={people} time={today} />
+        {persons.map((person) => (
+          <ClockCard key={person.name} person={person} time={today} />
         ))}
       </Container>
     </Style>
@@ -43,12 +41,12 @@ const currentAge = (birth: number, current: number) => current - birth
 
 */
 
-function ClockCard({ people, time }: { people: People; time: number }) {
+function ClockCard({ person, time }: { person: Person; time: number }) {
   return (
     <div>
-      <Typography variant="h6">{people.name}</Typography>
+      <Typography variant="h6">{person.name}</Typography>
 
-      {people.birthday}
+      {person.birthday}
     </div>
   )
 }
