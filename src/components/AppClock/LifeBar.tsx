@@ -55,6 +55,7 @@ function LifeBar({ bgnTime, endTime, persons }: Props) {
   useEffect(() => {
     setGrids(calcGrid(bgnTime, endTime, persons))
   }, [bgnTime, endTime, persons])
+  const currentYear = new Date().getFullYear()
 
   return (
     <Style>
@@ -88,36 +89,95 @@ function LifeBar({ bgnTime, endTime, persons }: Props) {
           </div>
         ))}
       </div>
+      <div className="table">
+        <div>
+          <div>年</div>
+          {persons.map((p, i) => (
+            <div key={i}>{p.name}</div>
+          ))}
+        </div>
+        {grids.years.map((y) => (
+          <div
+            key={y}
+            data-gene={y % 10 === 0}
+            data-current={currentYear === y}
+            data-future={currentYear < y}
+          >
+            <div>{y}</div>
+            {persons
+              .map((p, i) => [y, grids.days[i][y]] as const)
+              .map(([y, age], i) => (
+                <div
+                  key={i}
+                  data-anniv={age.num % 10 === 0}
+                  data-valid={age.valid}
+                  data-full={age.full}
+                >
+                  {age.num}
+                </div>
+              ))}
+          </div>
+        ))}
+      </div>
     </Style>
   )
 }
 const Style = styled.div`
   padding-right: 8vw;
-  img {
-    width: 100%;
-  }
   .yearbar,
   .bar {
     display: grid;
     width: 100%;
     grid-auto-flow: column;
+    font-size: 2vw;
+    color: #9c5fff;
   }
-  .yearbar {
-    .cell {
-      visibility: hidden;
-      &[data-gene='true'] {
-        visibility: visible;
-      }
+  .yearbar .cell {
+    visibility: hidden;
+    &[data-gene='true'] {
+      visibility: visible;
     }
   }
-  .bar {
-    .cell {
-      border: solid gray;
-      &[data-valid='true'] {
-        border-color: yellow;
+  .bar .cell {
+    background: gray;
+    height: 10px;
+    &[data-valid='true'] {
+      background: yellow;
+      &[data-full='true'] {
+        background: orange;
       }
-      &[data-valid='true'][data-full='true'] {
-        border-color: orange;
+    }
+    &[data-gene='true'] {
+      border-left: 1px #9c5fff solid;
+    }
+  }
+  .table {
+    > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 2fr;
+      text-align: center;
+      font-size: 1vh;
+      > div {
+        &[data-valid='false'] {
+          color: gray;
+        }
+        &[data-valid='true'] {
+          background: yellow;
+          &[data-anniv='true'] {
+            border-left: red solid;
+          }
+          &[data-full='true'] {
+            background: orange;
+          }
+        }
+      }
+
+      &[data-gene='true'] {
+        border-top: solid #9c5fff 2px;
+      }
+      &[data-current='true'] {
+        border: solid green 2px;
+        border-left: none;
       }
     }
   }

@@ -13,7 +13,7 @@ const Style = styled.div``
 
 const today = Date.now()
 const YEAR1990 = +new Date('1990-01-01')
-const YEAR2050 = +new Date('2050-01-01')
+const YEAR2050 = +new Date('2080-01-01')
 
 function Main() {
   return (
