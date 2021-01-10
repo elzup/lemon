@@ -6,9 +6,11 @@ const webpack = require('webpack')
 const withPWA = require('next-pwa')
 
 require('dotenv').config()
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = withPWA({
   pwa: {
+    disable: prod ? false : true,
     dest: 'public',
   },
   webpack: (config) => {
