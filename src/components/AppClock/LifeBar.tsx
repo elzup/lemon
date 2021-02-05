@@ -106,7 +106,7 @@ function LifeBar({ bgnTime, endTime, persons }: Props) {
             <div>{y}</div>
             {persons
               .map((p, i) => [y, grids.days[i][y]] as const)
-              .map(([y, age], i) => (
+              .map(([, age], i) => (
                 <div
                   key={i}
                   data-anniv={age.num % 10 === 0}
