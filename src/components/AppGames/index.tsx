@@ -55,9 +55,13 @@ function GameCard({ game }: { game: Game }) {
       </div>
 
       <div className="tags">
-        {game.pattern.split('、').map((name) => (
-          <span key={name}>{name}</span>
-        ))}
+        {game.pattern
+          .split('、')
+          .filter(Boolean)
+          .map((name) => (
+            <span key={name}>{name}</span>
+          ))}
+        {game.model && <span data-model={game.model}>{game.model}</span>}
       </div>
       <img
         style={{ display: show ? 'block' : 'none' }}
@@ -105,6 +109,15 @@ const GameWrap = styled.div`
       background: #eee;
       padding: 0 4px;
       border-radius: 3px;
+      &[data-model='Switch'] {
+        border-left: solid red;
+      }
+      &[data-model='Card'] {
+        border-left: solid green;
+      }
+      &[data-model='Web'] {
+        border-left: solid blue;
+      }
     }
   }
   .footer {
