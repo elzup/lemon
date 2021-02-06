@@ -35,3 +35,15 @@ export const getAuth = () => {
     logout: () => auth.signOut(),
   }
 }
+
+export const uploadGameImage = (name: string, file: File) => {
+  return new Promise((resolve) =>
+    firebase
+      .storage()
+      .ref(`/images/${name}`)
+      .put(file)
+      .on(firebase.storage.TaskEvent.STATE_CHANGED, (_snap) => {
+        resolve(true)
+      })
+  )
+}

@@ -21,6 +21,7 @@ export type LoginInfo =
 export type Game = {
   id: string
   title: string
+  optional: string
   model: string
   pattern: string
   // link: string

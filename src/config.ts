@@ -27,6 +27,7 @@ const loadPieple = (s: string): Person[] => {
 
 const config = {
   env: process.env.NODE_ENV,
+  storageHost: process.env.FIREBASE_STORAGE_BUCKET || '',
   whitelist: (process.env.WHITE_USERS || '').split(','),
   gamesListApi: process.env.GAMES_LIST_API || '',
   persons: loadPieple(process.env.PEOPLE || '{}'),
