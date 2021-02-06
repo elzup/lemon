@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -12,9 +13,9 @@ const firebaseConfig = {
   measumentId: process.env.FIREBASE_MEASUREMENT_ID,
 }
 
-const init = () => {
+const init = async () => {
   if (firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig)
+    await firebase.initializeApp(firebaseConfig)
     // firebase.analytics()
   }
 }
@@ -37,12 +38,16 @@ export const getAuth = () => {
 }
 
 export const uploadGameImage = (name: string, file: File) => {
+  init()
+
   return new Promise((resolve) =>
     firebase
       .storage()
-      .ref(`/images/${name}`)
+      .ref()
+      .child(`images`)
+      .child(name)
       .put(file)
-      .on(firebase.storage.TaskEvent.STATE_CHANGED, (_snap) => {
+      .on(firebase.storage.TaskEvent.STATE_CHANGED, () => {
         resolve(true)
       })
   )

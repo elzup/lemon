@@ -27,7 +27,8 @@ const loadPieple = (s: string): Person[] => {
 
 const config = {
   env: process.env.NODE_ENV,
-  storageHost: process.env.FIREBASE_STORAGE_BUCKET || '',
+  storageImg: (name: string) =>
+    `https://firebasestorage.googleapis.com/v0/b/lemoona.appspot.com/o/images%2F${name}?alt=media`,
   whitelist: (process.env.WHITE_USERS || '').split(','),
   gamesListApi: process.env.GAMES_LIST_API || '',
   persons: loadPieple(process.env.PEOPLE || '{}'),

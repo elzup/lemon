@@ -1,7 +1,9 @@
-import { Container, Typography } from '@material-ui/core'
+import { Button, Container, IconButton, Typography } from '@material-ui/core'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import config from '../../config'
+import { uploadGameImage } from '../../service/firebase'
 
 import { loadGames } from '../../service/gas'
 import { Game } from '../../types'
@@ -39,6 +41,7 @@ function Main() {
 
 function GameCard({ game }: { game: Game }) {
   const [show, setShow] = useState<boolean>(false)
+  const [imgUrl, setImgUrl] = useState<string>(config.storageImg(game.title))
 
   return (
     <GameWrap>
@@ -58,9 +61,26 @@ function GameCard({ game }: { game: Game }) {
       </div>
       <img
         style={{ display: show ? 'block' : 'none' }}
-        src={`//${config.storageHost}/images/${game.title}`}
+        src={imgUrl}
         onLoad={() => setShow(true)}
       />
+      <div className="footer">
+        <label>
+          <CloudUploadIcon fontSize="small" />
+          <input
+            type="file"
+            onChange={(e) => {
+              if (!e || !e.target.files) return
+              const file = e.target.files[0]
+
+              if (!file) return
+              uploadGameImage(game.title, file).then(() => {
+                setImgUrl((v) => `${v}&t=${Date.now()}`)
+              })
+            }}
+          />
+        </label>
+      </div>
     </GameWrap>
   )
 }
@@ -68,22 +88,32 @@ const GameWrap = styled.div`
   background: white;
   border-radius: 4%;
   margin-top: 12px;
-  padding: 12px;
   img {
     width: 100%;
   }
   .head {
     display: flex;
     justify-content: space-between;
+    padding: 12px 12px 0;
   }
   .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    padding: 4px;
     span {
       background: #eee;
       padding: 0 4px;
       border-radius: 3px;
+    }
+  }
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4px;
+    color: #b3b3b3;
+    input {
+      display: none;
     }
   }
 `
