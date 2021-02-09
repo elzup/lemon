@@ -1,10 +1,9 @@
-import { Button, Container, IconButton, Typography } from '@material-ui/core'
+import { Container, Typography } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import config from '../../config'
 import { uploadGameImage } from '../../service/firebase'
-
 import { loadGames } from '../../service/gas'
 import { Game } from '../../types'
 import { withAppli } from '../withAppli'
