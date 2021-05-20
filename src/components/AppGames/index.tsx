@@ -16,6 +16,9 @@ const Style = styled.div`
   }
 `
 
+const listLink =
+  'https://docs.google.com/spreadsheets/d/1n3roH3Rd561xMp__crrcYV1wPQwJsLKpANIt_zqidtg/edit#gid=0'
+
 function Main() {
   const [games, setGames] = useState<Game[] | null>(null)
 
@@ -27,7 +30,10 @@ function Main() {
     <Style>
       <Container>
         <Typography variant="h5">ゲーム</Typography>
-        <Typography variant="caption">一緒にやったゲームリスト</Typography>
+        <Typography variant="caption">
+          <a href={listLink}>一緒にやったゲームリスト</a>
+        </Typography>
+
         {!games && <Typography>laoding...</Typography>}
         <div className="games-box">
           {games &&
