@@ -54,9 +54,10 @@ type Appli = {
   path: string
 }
 const apps: Appli[] = [
-  { icon: '/appicon/face.svg', name: 'アイコンメイク', path: '/app/icon' },
+  { icon: '/appicon/face.svg', name: 'アイコン', path: '/app/icon' },
   { icon: '/appicon/clock.svg', name: 'クロック', path: '/app/clock' },
   { icon: '/appicon/games.svg', name: 'げーむす', path: '/app/games' },
+  { icon: '/appicon/tree.svg', name: 'ガーデン', path: '/app/garden' },
 ]
 
 function Main() {

@@ -27,6 +27,13 @@ export type Game = {
   // link: string
 }
 
+export type Tree = {
+  gen: number
+  seed: number
+  wat: number
+  lastWat: number
+}
+
 export type PersonRaw = {
   name: string
   birthday: string
