@@ -83,19 +83,23 @@ export const loadTree = (setTree: (v: Tree) => void) => {
 
     const tree = snap.data() as Tree
 
-    const someDay = new Date().getDate() === new Date(tree.lastWat).getDate()
+    const lastWatDay = new Date(tree.lastWat)
+    const today = new Date()
+    const DAY = 24 * 60 * 60 * 1000
+    const diffDay = Math.floor(+today / DAY) - Math.floor(+lastWatDay / DAY)
+
+    const someDay = diffDay === 0
     const finish = tree.gen >= 130
     const existsWat = tree.wat > 0
 
-    console.log(tree)
-    console.log({ someDay, finish, existsWat })
-
     if (!someDay && !finish && existsWat) {
+      const usingWat = Math.min(tree.wat, diffDay)
+
       saveTree({
         ...tree,
-        gen: tree.gen + 1,
+        gen: tree.gen + usingWat,
         lastWat: +new Date(),
-        wat: tree.wat - 1,
+        wat: tree.wat - usingWat,
       })
     }
     setTree(tree)
