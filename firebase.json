@@ -3,12 +3,23 @@
     "header": [
       {
         "source": "/sw.js",
-        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
       }
     ],
-    "predeploy": ["yarn export"],
+    "predeploy": [
+      "yarn export"
+    ],
     "public": "out",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "cleanUrls": true
   },
   "storage": {
