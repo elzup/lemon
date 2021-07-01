@@ -1,6 +1,6 @@
 import { PersonRaw, Person } from './types'
 
-const isPersonRaw = (p: Object): p is PersonRaw =>
+const isPersonRaw = (p: Record<string, unknown>): p is PersonRaw =>
   'name' in p &&
   'birthday' in p &&
   typeof p['name'] === 'string' &&

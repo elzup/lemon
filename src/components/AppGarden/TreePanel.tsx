@@ -72,7 +72,7 @@ function TreePanel() {
 
     if (!c || tree === null) return
     draw(c, tree.gen, tree.seed)
-  }, [!canvasRef.current, tree])
+  }, [canvasRef, tree])
 
   if (!tree) return <span></span>
 

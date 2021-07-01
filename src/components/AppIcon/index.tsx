@@ -85,7 +85,7 @@ function Main() {
               data-select={portrait === url}
               onClick={() => setPortrait(url)}
             >
-              <img src={url} />
+              <img src={url} alt={'generated image'} />
             </div>
           ))}
         </div>
@@ -97,8 +97,8 @@ function Main() {
             className="comp"
             style={{ display: 'grid', justifyContent: 'center' }}
           >
-            <img src={png} />
-            <img id="canvas-c" src={png} />
+            <img src={png} alt="generated image" />
+            <img id="canvas-c" src={png} alt="generated image" />
           </div>
         )}
         <canvas ref={canvasRef} height={255} width={255} />

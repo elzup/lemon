@@ -10,13 +10,13 @@ const pageVariants = {
 }
 
 export function withAppli<OProps extends {}>(Component: React.ElementType) {
-  return (props: OProps) => (
+  const WithApp = (props: OProps) => (
     <App>
       <AuthContainer />
-
       <motion.div initial="initial" animate="in" variants={pageVariants}>
         <Component {...props} />
       </motion.div>
     </App>
   )
+  return WithApp
 }

@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// TODO: remove
-
 import { Container, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import { Person } from '../../types'

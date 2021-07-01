@@ -71,6 +71,7 @@ function GameCard({ game }: { game: Game }) {
       <img
         style={{ display: show ? 'block' : 'none' }}
         src={imgUrl}
+        alt={`game image ${game.title}`}
         onLoad={() => setShow(true)}
       />
       <div className="footer">

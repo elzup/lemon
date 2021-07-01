@@ -2,6 +2,7 @@ import { Typography } from '@material-ui/core'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const MainStyle = styled.div`
   background: white;
@@ -78,7 +79,7 @@ function Main() {
             variants={itemAnim}
             onClick={() => router.push(app.path)}
           >
-            <img src={app.icon} />
+            <img src={app.icon} alt={`icon ${app.name}`} />
             <Typography>{app.name}</Typography>
           </motion.div>
         ))}

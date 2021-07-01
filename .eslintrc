@@ -1,8 +1,6 @@
 {
-  "extends": ["nzap", "nzap/tsx"],
+  "extends": "next",
   "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react/display-name": 0,
-    "@typescript-eslint/ban-types": 0
+    "@next/next/no-img-element": 0
   }
 }

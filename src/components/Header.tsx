@@ -17,9 +17,9 @@ const Style = styled.header`
 
 function Header() {
   return (
-    <Link href="/">
+    <Link href="/" passHref>
       <Style>
-        <img src="/icon-4x.png" />
+        <img src="/icon-4x.png" alt="lemo portal icon" />
         <Typography variant="h6">レモポータル</Typography>
       </Style>
     </Link>

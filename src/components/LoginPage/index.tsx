@@ -45,7 +45,7 @@ function LoginPageMain() {
     <Style>
       <div>
         <div className="title">
-          <img src="/icon-4x.png" />
+          <img src="/icon-4x.png" alt="lemo portal icon" />
           <Typography variant="h3">レモポータル</Typography>
         </div>
         <LoginButton />
