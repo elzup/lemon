@@ -21,6 +21,6 @@ jobs:
           channelId: live
           projectId: lemoona
     env:
-      NEXT_PUBLIC_WHITE_USERS: ${{ NEXT_PUBLIC_WHITE_USERS }}
-      NEXT_PUBLIC_GAMES_LIST_API: ${{ NEXT_PUBLIC_GAMES_LIST_API }}
-      NEXT_PUBLIC_PEOPLE: ${{ NEXT_PUBLIC_PEOPLE }}
+      NEXT_PUBLIC_WHITE_USERS: ${{ secrets.NEXT_PUBLIC_WHITE_USERS }}
+      NEXT_PUBLIC_GAMES_LIST_API: ${{ secrets.NEXT_PUBLIC_GAMES_LIST_API }}
+      NEXT_PUBLIC_PEOPLE: ${{ secrets.NEXT_PUBLIC_PEOPLE }}
