@@ -31,7 +31,7 @@ const config = {
     `https://firebasestorage.googleapis.com/v0/b/lemoona.appspot.com/o/images%2F${name}?alt=media`,
   whitelist: (process.env.NEXT_PUBLIC_WHITE_USERS || '').split(','),
   gamesListApi: process.env.NEXT_PUBLIC_GAMES_LIST_API || '',
-  persons: loadPieple(process.env.NEXT_PUBLIC_PEOPLE || '{}'),
+  persons: loadPieple(process.env.NEXT_PUBLIC_PEOPLE || '[]'),
 } as const
 
 export default config
