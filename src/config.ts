@@ -8,7 +8,6 @@ const isPersonRaw = (p: Record<string, unknown>): p is PersonRaw =>
 
 const isPersonRawArray = (p: unknown): p is PersonRaw[] => {
   if (!Array.isArray(p)) return false
-  console.log({ p })
   return p.every(isPersonRaw)
 }
 
@@ -34,6 +33,5 @@ const config = {
   gamesListApi: process.env.GAMES_LIST_API || '',
   persons: loadPieple(process.env.PEOPLE || '{}'),
 } as const
-console.log(config)
 
 export default config
