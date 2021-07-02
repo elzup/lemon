@@ -33,5 +33,6 @@ const config = {
   gamesListApi: process.env.NEXT_PUBLIC_GAMES_LIST_API || '',
   persons: loadPieple(process.env.NEXT_PUBLIC_PEOPLE || '[]'),
 } as const
+console.log(config)
 
 export default config
